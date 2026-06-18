@@ -1,0 +1,27 @@
+CREATE TABLE usuario (
+    id_usuario INTEGER PRIMARY KEY AUTOINCREMENT,
+    nombre TEXT NOT NULL,
+    apellido TEXT NOT NULL,
+    correo TEXT,
+    contrasena TEXT
+);
+
+CREATE TABLE ciclo_menstrual (
+    id_ciclo INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_usuario INTEGER,
+    fecha_inicio DATE,
+    duracion_ciclo INTEGER,
+    fecha_ovulacion DATE,
+    fecha_fin DATE,
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
+);
+
+CREATE TABLE cita_medica (
+    id_cita INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_usuario INTEGER,
+    especialidad TEXT,
+    fecha_cita DATE,
+    hora_cita TIME,
+    observaciones TEXT,
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
+);
